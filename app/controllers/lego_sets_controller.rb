@@ -13,7 +13,7 @@ class LegoSetsController < ApplicationController
     end
 
     # Will need to create a controlled form to add new lego_set. On form, owner and genre need to be dropdown populated by GET requests to /owners and /genres. For Genres, will need an "other" option that will send a POST to /genres to create a new genre?
-    post '/lego_sets/new' do
+    post '/lego_sets' do
         new_set = LegoSet.create(
             set_number: params[:set_number],
             pieces: params[:pieces],
@@ -33,6 +33,6 @@ class LegoSetsController < ApplicationController
         )
         lego_set.to_json
     end
-
+    
 end
 
