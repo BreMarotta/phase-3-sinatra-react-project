@@ -12,4 +12,7 @@ end
 use Rack::JSONBodyParser
 
 # Our application
+use OwnersController
+use LegoSetsController
+use GenresController
 run ApplicationController
