@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
 
     get '/genres' do 
-        genres = Genre.all 
+        genres = Genre.sort_order 
         genres.to_json(include: :lego_sets)
     end
 
