@@ -20,24 +20,25 @@ For this project, I needed to include:
 
 My API meets and exceeds the requirements for this project. I created three models with multiiple one-to-many relationship. I created the following models:
 
-* LegoSet 
-
-belongs_to :owner
+* LegoSet  
+belongs_to :owner   
 belongs_to :genre
 
-* Owner 
-
+* Owner   
 has_many :lego_sets  
 has_many :genres, through: :lego_sets
 
-* Genre 
-
-has_many :lego_sets
+* Genre   
+has_many :lego_sets   
 has_many :owners, through: :lego_sets
 
 By creating these models with the above described relationships and employing Active Record, I was able to create a dynamic database with multiple built in methods. (For reference on these relationships, please check out: https://edgeguides.rubyonrails.org/association_basics.html)
 
-Additionally, to meet the CRUD requirements, I developed multiple API routes in Sinatra. /genres and /owners endpoints both have GET requests to obtain information for the front end. /lego_sets has GET, POST, and PATCH requests.
+Additionally, to meet the CRUD requirements, I developed multiple API routes in Sinatra. 
+
+- "/genres" and "/owners" endpoints both respond to GET requests and send information to the front end. 
+
+- "/lego_sets" responds to GET, POST, and PATCH requests.
 
 
 ## Getting Started
