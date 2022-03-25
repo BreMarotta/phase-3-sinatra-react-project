@@ -1,8 +1,8 @@
 class LegoSetsController < ApplicationController 
 
     # Sets are sorted in ascending order by the set_number. Cannot get this to include both owner and genre.
-    get '/lego_sets' do
-        lego_sets = LegoSet.sort_order
+    get '/lego_sets/:id' do
+        lego_sets = LegoSet.sort_order(params[:id])
         lego_sets.to_json(include: :owner)  
     end
 
