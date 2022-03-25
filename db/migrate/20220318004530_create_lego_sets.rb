@@ -1,3 +1,4 @@
+
 class CreateLegoSets < ActiveRecord::Migration[6.1]
   def change
     create_table :lego_sets do |t|

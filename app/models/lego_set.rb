@@ -1,3 +1,4 @@
+
 class LegoSet < ActiveRecord::Base 
     belongs_to :owner
     belongs_to :genre
@@ -5,5 +6,7 @@ class LegoSet < ActiveRecord::Base
     def self.sort_order(arg)
         self.all.order("#{arg}": :asc)
     end
-
 end
+
+
+

@@ -58,6 +58,6 @@ If you have this server running in conjunction with the React app, you should be
 
 * Please check out the YouTube walk through video to see all the SPA features: https://youtu.be/py0fa3kAmFk
 
-* Also check out my blog about his project: 
+* Also check out my blog about his project: https://medium.com/@bremarotta/building-a-sinatra-ruby-api-a-lego-set-inventory-3f319e8a0ee7
 
 
