@@ -1,118 +1,49 @@
-# Phase 3 Project Guidelines
+# Family Lego Collection Inventory (Ruby/Sinatra API)
+ 
+ Repository for React Frontend: https://github.com/BreMarotta/lego-inventory-app
 
-## Learning Goals
+## Phase 2 Ruby
 
-- Build a web basic API with Sinatra and Active Record to support a React
-  frontend
+Phase 2 of the curriculum focuses on Ruby. This is my first time working in the backend of web development. The focus of my project is building a Sinatra API backend that uses Active Record. This is to access and persist data in a database that can then be used by a React app frontend. 
 
-## Introduction
 
-Congrats on getting through all the material for Phase 3! Now's the time to put
-it all together and build something from scratch to reinforce what you know and
-expand your horizons.
+For this project, I needed to include:
 
-The focus of this project is **building a Sinatra API backend** that uses
-**Active Record** to access and persist data in a database, which will be used
-by a separate **React frontend** that interacts with the database via the API.
+* Active Record to interact with my database
 
-## Requirements
+* A minimum of two models with at least a one-to-many relationship
 
-For this project, you must:
+* Create API routes in Sinatra to perform at least three distinct CRUD actions for at least one Active Record model
 
-- Use Active Record to interact with a database.
-- Have a minimum of two models with a one-to-many relationship.
-- Create API routes in Sinatra that handles at least three different CRUD
-  actions for at least one of your Active Record models.
-- Build a separate React frontend application that interacts with the API to
-  perform CRUD actions.
-- Use good OO design patterns. You should have separate classes for each of your
-  models, and create instance and class methods as necessary.
 
-For example, build a todo list application with a React frontend interface and a
-Sinatra backend API, where a user can:
+## Meeting the Requirements
 
-- **Create** a new todo
-- **Read** a list of all todos
-- **Update** an individual todo
-- **Delete** a todo
+My API meets and exceeds the requirements for this project. I created three models with multiiple one-to-many relationship. I created the following models:
 
-A `Todo` can be tagged with a `Category`, so that each todo _belongs to_ a
-category and each category _has many_ todos.
+* LegoSet 
+belongs_to :owner
+belongs_to :genre
+
+* Owner 
+has_many :lego_sets  
+has_many :genres, through: :lego_sets
+
+* Genre 
+has_many :lego_sets
+has_many :owners, through: :lego_sets
+
+By creating these models with the above described relationships and employing Active Record, I was able to create a dynamic database with multiple built in methods. https://edgeguides.rubyonrails.org/association_basics.html
+
+Additionally, to meet the CRUD requirements, I developed multiple API routes in Sinatra. /genres and /owners endpoints both have GET requests to obtain information for the front end. /lego_sets has GET, POST, and PATCH requests.
+
 
 ## Getting Started
+First, you will need to fork and clone this repository into a local directory. Once you navigate into the correct file, run:
 
-### Backend Setup
+### `bundle install` 
+to insall the gems required.
 
-This repository has all the starter code needed to get a Sinatra backend up and
-running. [**Fork and clone**][fork link] this repository to get started. Then, run
-`bundle install` to install the gems.
+Next, start the server 
+### ` bundle exec rake server`
+this will run the server on port http://localhost:9292
 
-[fork link]: https://github.com/learn-co-curriculum/phase-3-sinatra-react-project/fork
-
-The `app/controllers/application_controller.rb` file has an example GET route
-handler. Replace this route with routes for your project.
-
-You can start your server with:
-
-```console
-$ bundle exec rake server
-```
-
-This will run your server on port
-[http://localhost:9292](http://localhost:9292).
-
-### Frontend Setup
-
-Your backend and your frontend should be in **two different repositories**.
-
-Create a new repository in a **separate folder** with a React app for your
-frontend. `cd` out of the backend project directory, and use
-[create-react-app][] to generate the necessary code for your React frontend:
-
-```console
-$ npx create-react-app my-app-frontend
-```
-
-After creating the project locally, you should also
-[create a repository on GitHub][create repo] to host your repo and help
-collaborate, if you're working with a partner.
-
-### Fetch Example
-
-Your React app should make fetch requests to your Sinatra backend! Here's an
-example:
-
-```js
-fetch("http://localhost:9292/test")
-  .then((r) => r.json())
-  .then((data) => console.log(data));
-```
-
-## Project Tips
-
-- This project is intended to focus more on the backend than the frontend, so
-  try and keep the React side of things relatively simple. Focus on working with
-  Active Record and performing CRUD actions. What are some interesting queries you can write? What kinds of questions can you ask of your data?
-- Once you have a project idea, come up with a domain model and decide what
-  relationships exist between the models in your application. Use a tool like
-  [dbdiagram.io][] to help visualize your models.
-- Decide on your API endpoints. What data should they return? What kind of CRUD
-  action should they perform? What data do they need from the client?
-- Use [Postman][postman download] to test your endpoints.
-- Use `binding.pry` to debug your requests on the server. It's very helpful to use a
-  `binding.pry` in your controller within a route to see what `params` are being
-  sent.
-- Use the [Network Tab in the Dev Tools][network tab] in the frontend to debug
-  your requests.
-
-## Resources
-
-- [create-react-app][]
-- [dbdiagram.io][]
-- [Postman][postman download]
-
-[create-react-app]: https://create-react-app.dev/docs/getting-started
-[create repo]: https://docs.github.com/en/get-started/quickstart/create-a-repo
-[dbdiagram.io]: https://dbdiagram.io/
-[postman download]: https://www.postman.com/downloads/
-[network tab]: https://developer.chrome.com/docs/devtools/network/
